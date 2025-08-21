@@ -1,0 +1,56 @@
+name: Clone
+
+# 触发条件：每天 UTC 0 点执行，支持手动触发
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  clone-specific-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repository's master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
+      - name: Clone target repository and specific branch
+        run: |
+          # 克隆目标仓库
+          git clone https://github.com/OI-wiki/OI-wiki.git target-repo
+          
+          # 进入目标仓库目录
+          cd target-repo
+          
+          # 切换到gh-graph分支
+          git checkout gh-pages
+          
+          # 显示当前分支信息
+          echo "=== 当前检出分支 ==="
+          git branch --show-current
+          
+          # 返回上一级目录
+          cd ..
+
+      - name: Merge and push to master branch
+        run: |
+          # 添加目标仓库作为远程
+          git remote add target ./target-repo
+          
+          # 获取目标仓库的gh-graph分支
+          git fetch target gh-pages
+          
+          # 合并目标分支到当前仓库的master分支
+          git merge --allow-unrelated-histories target/gh-pages -m "Merge gh-graph from OI-wiki to master"
+          
+          # 推送更改到当前仓库的master分支
+          git push origin master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
