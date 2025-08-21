@@ -13,7 +13,7 @@ jobs:
       - name: Checkout current repository's master branch
         uses: actions/checkout@v4
         with:
-          ref: master
+          ref:main
           fetch-depth: 0
 
       - name: Set up Git
@@ -29,7 +29,7 @@ jobs:
           # 进入目标仓库目录
           cd target-repo
           
-          # 切换到gh-graph分支
+          # 切换到gh-pages分支
           git checkout gh-pages
           
           # 显示当前分支信息
@@ -39,18 +39,31 @@ jobs:
           # 返回上一级目录
           cd ..
 
-      - name: Merge and push to master branch
+      - name: Check for changes between branches
+        id: check_changes
         run: |
           # 添加目标仓库作为远程
           git remote add target ./target-repo
           
-          # 获取目标仓库的gh-graph分支
+          # 获取目标仓库的gh-pages分支
           git fetch target gh-pages
           
+          # 检查当前master分支与目标gh-pages分支的差异
+          if git diff --quiet main target/gh-pages; then
+            echo "没有发现差异，不需要同步"
+            echo "changes_exist=false" >> $GITHUB_OUTPUT
+          else
+            echo "发现差异，需要同步"
+            echo "changes_exist=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Merge and push to master branch
+        if: steps.check_changes.outputs.changes_exist == 'true'
+        run: |
           # 合并目标分支到当前仓库的master分支
-          git merge --allow-unrelated-histories target/gh-pages -m "Merge gh-graph from OI-wiki to master"
+          git merge --allow-unrelated-histories target/gh-pages -m "Merge gh-pages from OI-wiki to master"
           
           # 推送更改到当前仓库的master分支
-          git push origin master
+          git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
