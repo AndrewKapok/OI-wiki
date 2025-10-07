@@ -61,7 +61,7 @@ jobs:
         if: steps.check_changes.outputs.changes_exist == 'true'
         run: |
           # 合并目标分支到当前仓库的master分支
-          git merge --allow-unrelated-histories target/gh-pages -m "Merge gh-pages from OI-wiki to master"
+          git merge --strategy-option=theirs --allow-unrelated-histories target/gh-pages -m "Merge gh-pages from OI-wiki to master"
           
           # 推送更改到当前仓库的master分支
           git push origin main
