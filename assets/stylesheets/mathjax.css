@@ -1246,6 +1246,15 @@ mjx-container[jax="CHTML"] > mjx-math.NCM-N[breakable] > * {
   font-family: MJX-NCM-ZERO, MJX-NCM-SB;
 }
 
+.NCM-LR {
+  font-family: MJX-NCM-ZERO, MJX-NCM-LR;
+}
+
+@font-face /* NCM-LR */ {
+  font-family: MJX-NCM-LR;
+  src: url("../fonts/mathjax/mjx-ncm-lr.woff2") format("woff2");
+}
+
 .NCM-LB {
   font-family: MJX-NCM-ZERO, MJX-NCM-LB;
 }
@@ -1264,31 +1273,13 @@ mjx-container[jax="CHTML"] > mjx-math.NCM-N[breakable] > * {
   src: url("../fonts/mathjax/mjx-ncm-li.woff2") format("woff2");
 }
 
-.NCM-LR {
-  font-family: MJX-NCM-ZERO, MJX-NCM-LR;
+.NCM-LIB {
+  font-family: MJX-NCM-ZERO, MJX-NCM-LIB;
 }
 
-@font-face /* NCM-LR */ {
-  font-family: MJX-NCM-LR;
-  src: url("../fonts/mathjax/mjx-ncm-lr.woff2") format("woff2");
-}
-
-.NCM-SSLR {
-  font-family: MJX-NCM-ZERO, MJX-NCM-SSLR;
-}
-
-@font-face /* NCM-SSLR */ {
-  font-family: MJX-NCM-SSLR;
-  src: url("../fonts/mathjax/mjx-ncm-sslr.woff2") format("woff2");
-}
-
-.NCM-SSLB {
-  font-family: MJX-NCM-ZERO, MJX-NCM-SSLB;
-}
-
-@font-face /* NCM-SSLB */ {
-  font-family: MJX-NCM-SSLB;
-  src: url("../fonts/mathjax/mjx-ncm-sslb.woff2") format("woff2");
+@font-face /* NCM-LIB */ {
+  font-family: MJX-NCM-LIB;
+  src: url("../fonts/mathjax/mjx-ncm-lib.woff2") format("woff2");
 }
 
 .NCM-SSLI {
@@ -1298,15 +1289,6 @@ mjx-container[jax="CHTML"] > mjx-math.NCM-N[breakable] > * {
 @font-face /* NCM-SSLI */ {
   font-family: MJX-NCM-SSLI;
   src: url("../fonts/mathjax/mjx-ncm-ssli.woff2") format("woff2");
-}
-
-.NCM-LIB {
-  font-family: MJX-NCM-ZERO, MJX-NCM-LIB;
-}
-
-@font-face /* NCM-LIB */ {
-  font-family: MJX-NCM-LIB;
-  src: url("../fonts/mathjax/mjx-ncm-lib.woff2") format("woff2");
 }
 
 .NCM-SSLIB {
@@ -1388,6 +1370,24 @@ mjx-container[jax="CHTML"] > mjx-math.NCM-N[breakable] > * {
 @font-face /* NCM-SY */ {
   font-family: MJX-NCM-SY;
   src: url("../fonts/mathjax/mjx-ncm-sy.woff2") format("woff2");
+}
+
+.NCM-SSLR {
+  font-family: MJX-NCM-ZERO, MJX-NCM-SSLR;
+}
+
+@font-face /* NCM-SSLR */ {
+  font-family: MJX-NCM-SSLR;
+  src: url("../fonts/mathjax/mjx-ncm-sslr.woff2") format("woff2");
+}
+
+.NCM-SSLB {
+  font-family: MJX-NCM-ZERO, MJX-NCM-SSLB;
+}
+
+@font-face /* NCM-SSLB */ {
+  font-family: MJX-NCM-SSLB;
+  src: url("../fonts/mathjax/mjx-ncm-sslb.woff2") format("woff2");
 }
 
 .NCM-SYB {
