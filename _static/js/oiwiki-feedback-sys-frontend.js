@@ -1,4 +1,4 @@
-sessionStorage.setItem("commitHash", "60d36e9316be1fcc4d922496084cc6a5e70c82e4"); // commit hash injected here, see: scripts/pre-build/install-feedback-sys-frontend
+sessionStorage.setItem("commitHash", "1fa74b5ea81b87a9472eaee4365183c591c54687"); // commit hash injected here, see: scripts/pre-build/install-feedback-sys-frontend
 
 function matchColor() {
   const palettle = localStorage.getItem("/.__palette");
